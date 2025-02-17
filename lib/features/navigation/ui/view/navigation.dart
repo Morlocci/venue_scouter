@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:venue_scouter/widgets/bottom_navigation_bar.dart';
 import 'package:venue_scouter/features/navigation/ui/view_model/navigation_view_model.dart';
 
-class NavigationScreen extends StatelessWidget {
-  const NavigationScreen({super.key});
+class Navigation extends StatelessWidget {
+  const Navigation({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,6 @@ import 'package:venue_scouter/venue/domain/entities/venue.dart';
 
 class VenueService {
   final String apiUrl = 'https://restaurant-api.wolt.com/v1/pages/restaurants';
-
   final List<Venue> _nearbyVenues = [];
   final List<Venue> _favouriteVenues = [];
 

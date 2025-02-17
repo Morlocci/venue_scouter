@@ -5,13 +5,11 @@ import 'package:venue_scouter/venue/domain/service/venue_service.dart';
 class FavouritesViewModel extends ChangeNotifier {
   final VenueService _venueService;
 
+  List<Venue> _favouriteVenues = [];
+
   FavouritesViewModel(this._venueService) {
     getFavouriteVenues();
   }
-
-  String get headerTitle => 'Favourite Venues';
-
-  List<Venue> _favouriteVenues = [];
 
   List<Venue> get venues => _favouriteVenues;
 

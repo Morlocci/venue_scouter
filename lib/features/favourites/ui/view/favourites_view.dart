@@ -14,27 +14,29 @@ class Favourites extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => FavouritesViewModel(
         Provider.of<VenueService>(context, listen: false),
-      ),
+      )..getFavouriteVenues(),
       child: Consumer<FavouritesViewModel>(
         builder: (context, viewModel, child) {
           return Scaffold(
-            appBar: TopHeaderBar(headerName: viewModel.headerTitle),
-            body: ListView.builder(
-              padding: const EdgeInsets.all(16),
-              itemCount: viewModel.venues.length,
-              itemBuilder: (context, index) {
-                final venue = viewModel.venues[index];
-                return VenueTile(
-                  venueName: venue.name,
-                  venueDescription: venue.shortDescription,
-                  imageUrl: venue.imageUrl,
-                  isFavouriteVenue: viewModel.isVenueFavourite(venue.id),
-                  onFavouriteToggle: () {
-                    viewModel.toggleFavourite(venue);
-                  },
-                );
-              },
-            ),
+            appBar: const TopHeaderBar(headerName: 'Favourite Venues'),
+            body: viewModel.venues.isEmpty
+                ? const Center(child: Text('No favourite venues'))
+                : ListView.builder(
+                    padding: const EdgeInsets.all(16),
+                    itemCount: viewModel.venues.length,
+                    itemBuilder: (context, index) {
+                      final venue = viewModel.venues[index];
+                      return VenueTile(
+                        venueName: venue.name,
+                        venueDescription: venue.shortDescription,
+                        imageUrl: venue.imageUrl,
+                        isFavouriteVenue: viewModel.isVenueFavourite(venue.id),
+                        onFavouriteToggle: () {
+                          viewModel.toggleFavourite(venue);
+                        },
+                      );
+                    },
+                  ),
           );
         },
       ),
